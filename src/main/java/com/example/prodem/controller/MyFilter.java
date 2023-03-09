@@ -34,13 +34,10 @@ public class MyFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         // filtreleme işlemleri
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-        boolean tokenResult = false;
         try {
             String authHeader = httpServletRequest.getHeader("Authorization");
             if (authHeader != null && authHeader.startsWith("Bearer ")) {
                 isJwtTokenValid(authHeader);
-
-
             }
 
         } catch (ExpiredJwtException exp) {

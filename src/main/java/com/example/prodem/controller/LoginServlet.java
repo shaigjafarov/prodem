@@ -1,10 +1,16 @@
 package com.example.prodem.controller;
 
+import com.example.prodem.entity.AccountEn;
+import com.example.prodem.repository.AccountJpaRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Base64;
 import java.util.Date;
+import java.util.List;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -50,6 +56,21 @@ public class LoginServlet extends HttpServlet {
                 .signWith(SignatureAlgorithm.HS256, base64Secret)
                 .compact();
         return jws;}
+
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
+
+        AccountJpaRepository jpaRepository=new AccountJpaRepository();
+        List<AccountEn> allAccount = jpaRepository.getAllAccount();
+        ObjectMapper objectMapper = new ObjectMapper();
+        String json = objectMapper.writeValueAsString(allAccount);
+
+        response.setContentType("application/json");
+        response.setStatus(HttpServletResponse.SC_OK);
+        response.getWriter().write(json);
+
+    }
 
 
 }
