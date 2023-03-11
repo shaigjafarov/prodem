@@ -18,10 +18,12 @@ public class AccountEn {
 
     private BigDecimal balance;
 
+
+
     public AccountEn() {
     }
 
-    public AccountEn(Long id, String name, BigDecimal balance) {
+    public AccountEn(Long id, String name, BigDecimal balance, String surname) {
         this.id = id;
         this.name = name;
         this.balance = balance;
@@ -50,4 +52,6 @@ public class AccountEn {
     public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
+
+
 }

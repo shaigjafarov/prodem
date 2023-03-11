@@ -4,13 +4,16 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
     <persistence-unit name="MyPersistence" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>com.example.prodem.entity.AccountEn</class>
-        <properties>
 
-            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" /> <!-- DB Driver -->
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/mydb" /> <!-- BD Mane -->
-            <property name="javax.persistence.jdbc.user" value="postgres" /> <!-- DB User -->
-            <property name="javax.persistence.jdbc.password" value="postgre123" /> <!-- DB Password -->
+        <class>com.example.prodem.entity.AccountEn</class>
+        <class>com.example.prodem.entity.Student</class>
+        <class>com.example.prodem.entity.Teacher</class>
+        <properties>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/> <!-- DB Driver -->
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/mydb"/> <!-- BD Mane -->
+            <property name="javax.persistence.jdbc.user" value="postgres"/> <!-- DB User -->
+            <property name="javax.persistence.jdbc.password" value="postgre123"/> <!-- DB Password -->
         </properties>
 
     </persistence-unit>
